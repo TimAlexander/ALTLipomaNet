@@ -19,16 +19,7 @@ from sklearn.metrics import auc, roc_curve,f1_score,accuracy_score,recall_score
 
 class Trainer2d(object):
     """
-    Trains a multilabel classification:
-    example==> given a CT slice with segmentation labels tell which organs are present in CT slice
-    used to train and validate
-
-    :param net: the unet instance to train
-    :param batch_size: size of training batch
-    :param verification_batch_size: size of verification batch
-    :param norm_grads: (optional) true if normalized gradients should be added to the summaries
-    :param optimizer: (optional) name of the optimizer to use (momentum or adam)
-    :param opt_kwargs: (optional) kwargs passed to the learning rate (momentum opt) and to the optimizer
+     ToDo
 
     """
 
@@ -355,16 +346,7 @@ class Trainer2d(object):
 
 class Trainer3d(object):
     """
-    Trains a multilabel classification:
-    example==> given a CT slice with segmentation labels tell which organs are present in CT slice
-    used to train and validate
-
-    :param net: the unet instance to train
-    :param batch_size: size of training batch
-    :param verification_batch_size: size of verification batch
-    :param norm_grads: (optional) true if normalized gradients should be added to the summaries
-    :param optimizer: (optional) name of the optimizer to use (momentum or adam)
-    :param opt_kwargs: (optional) kwargs passed to the learning rate (momentum opt) and to the optimizer
+        ToDo
 
     """
 

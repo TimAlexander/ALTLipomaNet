@@ -107,10 +107,11 @@ class ClassificationDataset2d(Dataset):
                 resize_size = (h,w)
         
             #Resize Image
-            image = transform.resize(image,resize_size,order=3)
-            image = np.expand_dims(image,0)
-            
-                
+            image = transform.resize(image,resize_size,order=3,anti_aliasing=True)
+
+            if len(image.shape)==2:
+                image = np.expand_dims(image,0) #Add channel dimension
+                    
             if self.transformations:    
                 #Transform    
                 size = np.random.randint(0,len(self.transformations)+1)
@@ -123,25 +124,31 @@ class ClassificationDataset2d(Dataset):
                 
                 #Else : No augmentation selected
 
-            if (image.shape[1] != 224) or (image.shape[2] != 224):
-                image = monai.transforms.RandSpatialCrop(roi_size=(224,224),random_size=False)(image)
+            if self.image_net:
+                self.image_size = 224,224
+            #Cropping
+            if (image.shape[1] != self.image_size[0]) or (image.shape[2] != self.image_size[1]):
+                image = monai.transforms.RandSpatialCrop(roi_size=(self.image_size[0],self.image_size[1]),random_size=False)(image)
                 
-                
-            image = np.squeeze(image,0)
 
             #Transformations to be done if we want to use a on ImageNet pretrained network
             if self.image_net:
+
                 image = rescale_intensity(image, out_range=(0.0, 1.0))
-                image = np.stack([image, image, image], axis=-1)
+
+                if image.shape[0] == 1:
+                    image = np.squeeze(image,0)
+                    image = np.stack([image, image, image], axis=0)
+                #else assume 3 channels
 
                 mean = [0.485, 0.456, 0.406]
                 std = [0.229, 0.224, 0.225]
 
-                image[:, :, 0] = (image[:, :, 0] - mean[0]) / std[0]
-                image[:, :, 1] = (image[:, :, 1] - mean[1]) / std[1]
-                image[:, :, 2] = (image[:, :, 2] - mean[2]) / std[2]
+                image[0, :, :] = (image[0, :, :] - mean[0]) / std[0]
+                image[1, :, :] = (image[1, :, :] - mean[1]) / std[1]
+                image[2, :, :] = (image[2, :, :] - mean[2]) / std[2]
             
-            image = transforms.ToTensor()(image)
+            image = torch.from_numpy(image)
                 
            
             output = {}

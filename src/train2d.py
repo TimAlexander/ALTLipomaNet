@@ -231,7 +231,8 @@ def train(args):
                                 "Mean_Sensitivity":mean_sensitvity,
                                 "Std_Sensitivity":std_sensitivity,
                                 "Mean_Specificity":mean_specificity,
-                                "Std_Specificity":std_specificity})
+                                "Std_Specificity":std_specificity},
+                                index=[0])
     
     metrics_df.to_csv(args.outputdir+"metrics_overview.csv",index=False)
 
@@ -263,9 +264,9 @@ if __name__ == "__main__":
     parser.add_argument('--patience',type=int,default=10)
 
     #Data Arguments
-    parser.add_argument('--datadir',type=str,default='/home/data')
+    parser.add_argument('--datadir',type=str,default='/home/data/')
     parser.add_argument('--targetcsv',type=str,default='/home/target.csv')
-    parser.add_argument('--outputdir',type=str,default='/home/output')
+    parser.add_argument('--outputdir',type=str,default='/home/output/')
 
     args = parser.parse_args()
 

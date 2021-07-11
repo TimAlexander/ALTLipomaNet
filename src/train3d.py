@@ -211,7 +211,8 @@ def train(args):
                                 "Mean_Sensitivity":mean_sensitvity,
                                 "Std_Sensitivity":std_sensitivity,
                                 "Mean_Specificity":mean_specificity,
-                                "Std_Specificity":std_specificity})
+                                "Std_Specificity":std_specificity},
+                                index=[0])
     
     metrics_df.to_csv(args.outputdir+"metrics_overview.csv",index=False)
 
