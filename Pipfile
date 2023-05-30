@@ -15,6 +15,7 @@ dipy = "*"
 grad-cam = "*"
 pandas = "*"
 pre-commit = "*"
+torchio = "*"
 
 [dev-packages]
 
