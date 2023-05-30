@@ -1,8 +1,10 @@
 from random import shuffle
-from .Dataset import ClassificationDataset2d,ClassificationDataset3d
-from torch.utils.data import  DataLoader
 
-    
+from torch.utils.data import DataLoader
+
+from .Dataset import ClassificationDataset2d, ClassificationDataset3d
+
+
 class ClassificationDataModule2d(object):
     
     def __init__(self,root_path,train_patients,train_y,val_patients,val_y,batch_size=2,image_size=224,transformations=None,image_net=True,crop_tumor=True,tumor_padding=10

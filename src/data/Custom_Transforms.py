@@ -1,8 +1,7 @@
 import numpy as np
-from scipy.ndimage.interpolation import map_coordinates
 from scipy.ndimage.filters import gaussian_filter
+from scipy.ndimage.interpolation import map_coordinates
 from skimage.transform import resize
-
 
 
 class TumorCrop2d(object):
