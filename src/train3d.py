@@ -1,22 +1,24 @@
-from __future__ import print_function, division
-from sklearn.model_selection import RepeatedStratifiedKFold
-import numpy as np
-from sklearn.utils.sparsefuncs import min_max_axis
-from torch.optim import lr_scheduler
-import sys
-import os
-import glob
-from solver.Trainer import Trainer3d
-from torch.utils.tensorboard import SummaryWriter
-import torch
-from torch.nn import CrossEntropyLoss
-from model.model_zoo import load_model
-import pandas as pd
-import monai
-import shutil
-from argparse import ArgumentParser
-import torchio as tio
+from __future__ import division, print_function
 
+import glob
+import os
+import shutil
+import sys
+from argparse import ArgumentParser
+
+import monai
+import numpy as np
+import pandas as pd
+import torch
+import torchio as tio
+from sklearn.model_selection import RepeatedStratifiedKFold
+from sklearn.utils.sparsefuncs import min_max_axis
+from torch.nn import CrossEntropyLoss
+from torch.optim import lr_scheduler
+from torch.utils.tensorboard import SummaryWriter
+
+from model.model_zoo import load_model
+from solver.Trainer import Trainer3d
 
 random_state_torch = True
 random_state_np = True

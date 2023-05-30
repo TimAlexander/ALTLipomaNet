@@ -1,21 +1,23 @@
-from __future__ import print_function, division
-from sklearn.model_selection import RepeatedStratifiedKFold
-import numpy as np
-from torch.optim import lr_scheduler
-import sys
-import os
+from __future__ import division, print_function
+
 import glob
-from solver.Trainer import Trainer2d
-from data.Custom_Transforms import ElasticTransform
-from torch.utils.tensorboard import SummaryWriter
-import torch
-from torch.nn import CrossEntropyLoss
-from model.model_zoo import load_model
-import pandas as pd
-import monai
+import os
 import shutil
+import sys
 from argparse import ArgumentParser
 
+import monai
+import numpy as np
+import pandas as pd
+import torch
+from sklearn.model_selection import RepeatedStratifiedKFold
+from torch.nn import CrossEntropyLoss
+from torch.optim import lr_scheduler
+from torch.utils.tensorboard import SummaryWriter
+
+from data.Custom_Transforms import ElasticTransform
+from model.model_zoo import load_model
+from solver.Trainer import Trainer2d
 
 random_state_torch = True
 random_state_np = True
