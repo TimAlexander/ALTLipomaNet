@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+scipy = "*"
+scikit-image = "*"
+torch = "*"
+torchvision = "*"
+torchaudio = "*"
+nibabel = "*"
+matplotlib = "*"
+dipy = "*"
+grad-cam = "*"
+pandas = "*"
+pre-commit = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
