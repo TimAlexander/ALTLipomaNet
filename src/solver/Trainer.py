@@ -1,20 +1,23 @@
-from __future__ import print_function, division
-#Generic Libaries
-import torch
-import numpy as np
-import os
+from __future__ import division, print_function
+
 import logging
+import os
 import shutil
 from datetime import datetime
 
+import numpy as np
+
+#Generic Libaries
+import torch
+from sklearn.metrics import accuracy_score, auc, f1_score, recall_score, roc_curve
+
 #Data
-from data.Data_Modules import ClassificationDataModule2d,ClassificationDataModule3d
+from data.Data_Modules import ClassificationDataModule2d, ClassificationDataModule3d
+
+from .Custom_Samplers import Curriculum_sampler
 
 #Solver
 from .Earlystop import EarlyStopping
-from .Custom_Samplers import Curriculum_sampler
-from sklearn.metrics import auc, roc_curve,f1_score,accuracy_score,recall_score
-
 
 
 class Trainer2d(object):
