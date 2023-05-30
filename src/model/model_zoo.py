@@ -1,6 +1,7 @@
-import torch.nn as nn
-from .ResNet3D import generate_model
 import torch
+import torch.nn as nn
+
+from .ResNet3D import generate_model
 
 ResNets = ['resnet18','resnet34','resnet50','resnet101','resnet152']
 DenseNets = ['densenet121','densenet161','densenet169','densenet201']

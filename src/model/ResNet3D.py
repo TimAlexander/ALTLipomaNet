@@ -5,7 +5,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-
 """
 https://github.com/kenshohara/3D-ResNets-PyTorch/blob/master/models/resnet.py
 """
